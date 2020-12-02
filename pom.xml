@@ -4,9 +4,32 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.luoshu.open.mybatisx</groupId>
+    <groupId>com.github.luoshu-open</groupId>
     <artifactId>mybatis-x</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <name>mybatis-x</name>
+    <description>mybatis 可以自动生成查询语句</description>
+    <url>https://github.com/luoshu-open/mybatis-x.git</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>朱小杰</name>
+            <email>zxjother@163.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/luoshu-open/mybatis-x.git</url>
+        <connection>https://github.com/luoshu-open/mybatis-x.git</connection>
+    </scm>
 
     <properties>
         <!--项目编码改为UTF-8 -->
@@ -36,6 +59,44 @@
     </dependencies>
 
 
+
+    <profiles>
+        <profile>
+            <id>oss</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>oss</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>oss</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+                </repository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
     <build>
         <plugins>
             <!-- 指定jdk，防止update project -->
@@ -50,7 +111,10 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+
         </plugins>
+
     </build>
 
 
